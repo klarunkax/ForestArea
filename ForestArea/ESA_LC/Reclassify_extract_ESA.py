@@ -22,15 +22,15 @@ inRaster10 = workdir + "/2020.tif"
 reclassField = "Value"
 remap30 = RemapValue([["30", "1"]])
 remap40 = RemapValue([["40", "1"]])
-# remap50 = RemapValue([["50", "1"]])
-# remap60 = RemapValue([["60", "1"], ["61", "1"], ["62", "1"]])
-# remap70 = RemapValue([["70", "1"], ["71", "1"], ["72", "1"]])
-# remap80 = RemapValue([["80", "1"], ["81", "1"], ["82", "1"]])
-# remap90 = RemapValue([["90", "1"]])
-# remap100 = RemapValue([["100", "1"]])
-# remap110 = RemapValue([["110", "1"]])
-# remap160 = RemapValue([["160", "1"]])
-# remap170 = RemapValue([["170", "1"]])
+remap50 = RemapValue([["50", "1"]])
+remap60 = RemapValue([["60", "1"], ["61", "1"], ["62", "1"]])
+remap70 = RemapValue([["70", "1"], ["71", "1"], ["72", "1"]])
+remap80 = RemapValue([["80", "1"], ["81", "1"], ["82", "1"]])
+remap90 = RemapValue([["90", "1"]])
+remap100 = RemapValue([["100", "1"]])
+remap110 = RemapValue([["110", "1"]])
+remap160 = RemapValue([["160", "1"]])
+remap170 = RemapValue([["170", "1"]])
 
 
 rasters = [inRaster, inRaster2, inRaster3, inRaster4, inRaster5, inRaster6, inRaster7, inRaster8, inRaster9, inRaster10]
