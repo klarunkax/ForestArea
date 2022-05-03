@@ -21,7 +21,7 @@ Modis_Forest = pandas.DataFrame(Modis_Forest)
 #delete categories 30, 40, 170
 ESA_Forest = ESA_Forest.loc[:, ~ESA_Forest.columns.str.endswith('_30')]
 ESA_Forest = ESA_Forest.loc[:, ~ESA_Forest.columns.str.endswith('_40')]
-ESA_Forest = ESA_Forest.loc[:, ~ESA_Forest.columns.str.endswith('_170')]
+
 
 #1.) sum up all the forest catergories together by years = TOTAL FOREST
 total_ESA_Forest = pandas.DataFrame(ESA_Forest)
@@ -42,7 +42,7 @@ total_ESA_Forest['2015'] = ESA_2015.sum(axis=1)
 ESA_2018 = ESA_Forest.loc[:,ESA_Forest.columns.str.startswith('2018')]
 total_ESA_Forest['2018'] = ESA_2018.sum(axis=1)
 ESA_2020 = ESA_Forest.loc[:,ESA_Forest.columns.str.startswith('2020')]
-total_ESA_Forest['2020'] = ESA_2018.sum(axis=1)
+total_ESA_Forest['2020'] = ESA_2020.sum(axis=1)
 #delete forest categories and keep only totals for each year
 total_ESA_Forest = total_ESA_Forest[['GRID_CODE', 'EEA39', 'EU27', '1992', '2000', '2005', '2006', '2010', '2012', '2015', '2018', '2020']]
 
@@ -89,7 +89,7 @@ total_core_ESA['2015'] = ESA_2015.sum(axis=1)
 ESA_2018 = core_ESA_Forest.loc[:,core_ESA_Forest.columns.str.startswith('2018')]
 total_core_ESA['2018'] = ESA_2018.sum(axis=1)
 ESA_2020 = core_ESA_Forest.loc[:,core_ESA_Forest.columns.str.startswith('2020')]
-total_core_ESA['2020'] = ESA_2018.sum(axis=1)
+total_core_ESA['2020'] = ESA_2020.sum(axis=1)
 
 # #delete forest categories and keep only totals for each year
 total_core_ESA = total_core_ESA[['GRID_CODE', 'EEA39', 'EU27', '1992', '2000', '2005', '2006', '2010', '2012','2015', '2018', '2020']]
@@ -242,6 +242,14 @@ print(ESA_NONcore_EU27)
 print(ESA_EU27_change)
 print(ESA_core_EU27_change)
 print(ESA_NONcore_EU27_change)
+
+sum_ESA_EU27 = pandas.concat([ESA_EU27, ESA_core_EU27, ESA_NONcore_EU27], axis=1, join="inner")
+sum_ESA_EU27.to_csv('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/sum_tables/sum_ESA_EU27.csv')
+print(sum_ESA_EU27)
+
+change_ESA_EU27 = pandas.concat([ESA_EU27_change, ESA_core_EU27_change, ESA_NONcore_EU27_change], axis=1, join="inner")
+change_ESA_EU27.to_csv('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/sum_tables/change_ESA_EU27.csv')
+print(change_ESA_EU27)
 #
 # # # 6.) plot charts
 # # ESA_EEA39.plot.bar(

@@ -7,11 +7,13 @@ import numpy as np
 
 os.chdir('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_tables')
 
+#load the statistics
 CLC_Forest = pandas.read_csv('CLC_Forest_v2.csv')
 COP_Forest = pandas.read_csv('COP_Forest_v01.csv')
 ESA_Forest = pandas.read_csv('ESA_Forest_v2.csv')
 Modis_Forest = pandas.read_csv('modis_forest_v1.csv')
 
+#put the stats into dataframes
 CLC_Forest = pandas.DataFrame(CLC_Forest)
 COP_Forest = pandas.DataFrame(COP_Forest)
 ESA_Forest = pandas.DataFrame(ESA_Forest)
@@ -150,54 +152,60 @@ CLC_NONcore_EU27_t = CLC_NONcore_EU27_t[['2000-2006', '2006-2012', '2012-2018']]
 CLC_NONcore_EU27_change = CLC_NONcore_EU27_t.T
 print(CLC_NONcore_EU27_change)
 #
-
+# sum_CLC_EU27 = pandas.concat([CLC_EU27, CLC_core_EU27, CLC_NONcore_EU27], axis=1, join="inner")
+# sum_CLC_EU27.to_csv('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/sum_tables/sum_CLC_EU27.csv')
+# print(sum_CLC_EU27)
+#
+# change_CLC_EU27 = pandas.concat([CLC_EU27_change, CLC_core_EU27_change, CLC_NONcore_EU27_change], axis=1, join="inner")
+# change_CLC_EU27.to_csv('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/sum_tables/change_CLC_EU27.csv')
+# print(change_CLC_EU27)
 # # # 6.) plot charts
 
-CLC_EU27.plot.bar(
-ylabel="milion hectares", xlabel="year", title="CLC total forest area in EU27", legend=None)
-plt.ylim(bottom=0, top=180)
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_EU27.png')
-plt.show()
-#
-
-CLC_core_EU27.plot.bar(
-ylabel="milion hectares", xlabel="year", title="CLC core forest area in EU27", legend=None)
-plt.ylim(bottom=0, top=180)
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_core_EU27.png')
-plt.show()
+# CLC_EU27.plot.bar(
+# ylabel="milion hectares", xlabel="year", title="CLC total forest area in EU27", legend=None)
+# plt.ylim(bottom=0, top=180)
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_EU27.png')
+# plt.show()
 # #
-
-CLC_NONcore_EU27.plot.bar(
-ylabel="milion hectares", xlabel="years", title="CLC non-core forest area in EU27", legend=None)
-plt.ylim(bottom=0, top=180)
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_NONcore_EU27.png')
-plt.show()
-# #
+# 
+# CLC_core_EU27.plot.bar(
+# ylabel="milion hectares", xlabel="year", title="CLC core forest area in EU27", legend=None)
+# plt.ylim(bottom=0, top=180)
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_core_EU27.png')
+# plt.show()
 # # #
-
-
-CLC_EU27_change.plot.bar(
-ylabel="milion hectares", xlabel="Years", title="CLC change in total forest area in EU27", legend=None)
-plt.ylim(bottom=-3, top=3.5)
-plt.xticks(rotation='horizontal')
-plt.axhline(y=0, color='r', linestyle='-')
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_EU27_change.png')
-plt.show()
-
-
-CLC_core_EU27_change.plot.bar(
-ylabel="milion hectares", xlabel="years", title="CLC change in core forest area in EU27", legend=None)
-plt.ylim(bottom=-3, top=3.5)
-plt.xticks(rotation='horizontal')
-plt.axhline(y=0, color='r', linestyle='-')
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_core_EU27_change.png')
-plt.show()
-
-
-CLC_NONcore_EU27_change.plot.bar(
-ylabel="milion hectares", xlabel="years", title="CLC change in non-core forest area in EU27", legend=None)
-plt.ylim(bottom=-3, top=3.5)
-plt.xticks(rotation='horizontal')
-plt.axhline(y=0, color='r', linestyle='-')
-plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_NONcore_EU27_change.png')
-plt.show()
+# 
+# CLC_NONcore_EU27.plot.bar(
+# ylabel="milion hectares", xlabel="years", title="CLC non-core forest area in EU27", legend=None)
+# plt.ylim(bottom=0, top=180)
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_NONcore_EU27.png')
+# plt.show()
+# # #
+# # # #
+# 
+# 
+# CLC_EU27_change.plot.bar(
+# ylabel="milion hectares", xlabel="Years", title="CLC change in total forest area in EU27", legend=None)
+# plt.ylim(bottom=-3, top=3.5)
+# plt.xticks(rotation='horizontal')
+# plt.axhline(y=0, color='r', linestyle='-')
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_EU27_change.png')
+# plt.show()
+# 
+# 
+# CLC_core_EU27_change.plot.bar(
+# ylabel="milion hectares", xlabel="years", title="CLC change in core forest area in EU27", legend=None)
+# plt.ylim(bottom=-3, top=3.5)
+# plt.xticks(rotation='horizontal')
+# plt.axhline(y=0, color='r', linestyle='-')
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_core_EU27_change.png')
+# plt.show()
+# 
+# 
+# CLC_NONcore_EU27_change.plot.bar(
+# ylabel="milion hectares", xlabel="years", title="CLC change in non-core forest area in EU27", legend=None)
+# plt.ylim(bottom=-3, top=3.5)
+# plt.xticks(rotation='horizontal')
+# plt.axhline(y=0, color='r', linestyle='-')
+# plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/CLC_NONcore_EU27_change.png')
+# plt.show()

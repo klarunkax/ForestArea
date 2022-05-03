@@ -15,7 +15,6 @@ inRaster4 = workdir + "/U2018_CLC2018_V2020_20u1.tif"
 inRaster5 = workdir + "/U2012_CLC2006_V2020_20u1.tif"
 
 reclassField = "Value"
-remapF = RemapValue([["23", "1"], ["24", "1"], ["25", "1"], ["29", "1"]])
 remapBLF = RemapValue([["23", "1"]])
 remapCF = RemapValue([["24", "1"]])
 remapMF = RemapValue([["25", "1"]])
@@ -26,7 +25,7 @@ remapTWS = RemapValue([["29", "1"]])
 
 rasters = [inRaster, inRaster2, inRaster3, inRaster4, inRaster5]
 
-remaps = {remapF:"remapF", remapBLF:"remapBLF", \
+remaps = {remapBLF:"remapBLF", \
           remapCF:"remapCF", remapMF:"remapMF", \
           remapTWS:"remapTWS"}
 
