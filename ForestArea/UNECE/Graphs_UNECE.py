@@ -24,16 +24,17 @@ UNECE_core_EU25 = UNECE_core_EU25.rename(columns={"Forest - 2020 ( 1000 ha )": "
 print(UNECE_core_EU25.to_string())
 UNECE_core_EU25.loc['UNECE_core_EU25'] = UNECE_core_EU25.sum(numeric_only=True, axis=0)/1000 #mil. hectares
 UNECE_core_EU25 = UNECE_core_EU25.loc["UNECE_core_EU25"]
+UNECE_core_EU25 = UNECE_core_EU25.sort_index()
 print(UNECE_core_EU25)
 
 #TOTAL FOREST
-
 
 UNECE_EU25 = UNECE_Forest.iloc[:, 14:20]
 UNECE_EU25 = UNECE_EU25.rename(columns={"Total forest and OWL - 2020 ( 1000 ha )": "2020", "Total forest and OWL - 2015 ( 1000 ha )": "2015", "Total forest and OWL - 2010 ( 1000 ha )": "2010", "Total forest and OWL - 2005 ( 1000 ha )": "2005", "Total forest and OWL - 2000 ( 1000 ha )": "2000", "Total forest and OWL - 1990 ( 1000 ha )": "1990"})
 print(UNECE_EU25.to_string())
 UNECE_EU25.loc['UNECE_EU25'] = UNECE_EU25.sum(numeric_only=True, axis=0)/1000 #mil. hectares
 UNECE_EU25 = UNECE_EU25.loc["UNECE_EU25"]
+UNECE_EU25 = UNECE_EU25.sort_index()
 print(UNECE_EU25)
 
 #NON CORE FOREST
@@ -43,8 +44,10 @@ UNECE_NONcore_EU25 = UNECE_NONcore_EU25.rename(columns={"OWL - 2020 ( 1000 ha )"
 print(UNECE_NONcore_EU25.to_string())
 UNECE_NONcore_EU25.loc['UNECE_NONcore_EU25'] = UNECE_NONcore_EU25.sum(numeric_only=True, axis=0)/1000 #mil. hectares
 UNECE_NONcore_EU25 = UNECE_NONcore_EU25.loc["UNECE_NONcore_EU25"]
+UNECE_NONcore_EU25 = UNECE_NONcore_EU25.sort_index()
 print(UNECE_NONcore_EU25)
 
+#
 # # 4.) Change data
 # #A) UNECE_EU25 Total CHANGE
 UNECE_EU25 = pandas.DataFrame(UNECE_EU25)
@@ -101,21 +104,21 @@ change_UNECE_EU25.to_csv('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Fo
 # # # 6.) plot charts
 #
 UNECE_EU25.plot.bar(
-ylabel="milion hectares", xlabel="year", title="UNECE total forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="year", title="UNECE Forest+Other wooded land in EU25", legend=None)
 plt.ylim(bottom=0, top=180)
 plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/UNECE_EU25.png')
 plt.show()
 #
 
 UNECE_core_EU25.plot.bar(
-ylabel="milion hectares", xlabel="year", title="UNECE core forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="year", title="UNECE Forest in EU25", legend=None)
 plt.ylim(bottom=0, top=180)
 plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/UNECE_core_EU25.png')
 plt.show()
 # #
 
 UNECE_NONcore_EU25.plot.bar(
-ylabel="milion hectares", xlabel="years", title="UNECE non-core forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="years", title="Other wooded land in EU25", legend=None)
 plt.ylim(bottom=0, top=180)
 plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/Data/output_charts/UNECE_NONcore_EU25.png')
 plt.show()
@@ -124,7 +127,7 @@ plt.show()
 
 
 UNECE_EU25_change.plot.bar(
-ylabel="milion hectares", xlabel="Years", title="UNECE change in total forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="Years", title="UNECE change in Forest + Other wooded land in EU25", legend=None)
 plt.ylim(bottom=-4, top=7)
 plt.xticks(rotation='horizontal')
 plt.axhline(y=0, color='r', linestyle='-')
@@ -132,7 +135,7 @@ plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/
 plt.show()
 
 UNECE_core_EU25_change.plot.bar(
-ylabel="milion hectares", xlabel="years", title="UNECE change in core forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="years", title="UNECE change in Forest in EU25", legend=None)
 plt.ylim(bottom=-4, top=7)
 plt.xticks(rotation='horizontal')
 plt.axhline(y=0, color='r', linestyle='-')
@@ -140,7 +143,7 @@ plt.savefig('C:/Users/Klara/Documents/Prace/JRC/Teleworking/2022/Forest area EU/
 plt.show()
 
 UNECE_NONcore_EU25_change.plot.bar(
-ylabel="milion hectares", xlabel="years", title="UNECE change in non-core forest area in EU25", legend=None)
+ylabel="milion hectares", xlabel="years", title="UNECE change in Other wooded land in EU25", legend=None)
 plt.ylim(bottom=-4, top=7)
 plt.xticks(rotation='horizontal')
 plt.axhline(y=0, color='r', linestyle='-')
